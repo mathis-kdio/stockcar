@@ -10,14 +10,17 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+          cache: maven
       - name: Build with Maven
-        run: mvn -B package -f esieaBack/pom.xml
+        run: mvn --batch-mode --update-snapshots verify -f esieaBack/pom.xml
       - name: Run tests and collect coverage
         run: mvn -B test -f esieaBack/pom.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           root_dir: esieaBack
+          fail_ci_if_error: true
+
   build-FrontEnd:
     runs-on: ubuntu-latest
     steps:
@@ -28,8 +31,4 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn -B package -f esieaFront/pom.xml
-      - name: Run tests and collect coverage
-        run: mvn -B test -f esieaFront/pom.xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: mvn --batch-mode --update-snapshots verify -f esieaFront/pom.xml
