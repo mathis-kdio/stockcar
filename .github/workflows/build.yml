@@ -18,6 +18,8 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           root_dir: esieaBack
+          fail_ci_if_error: true
+
   build-FrontEnd:
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +31,3 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn -B package -f esieaFront/pom.xml
-      - name: Run tests and collect coverage
-        run: mvn -B test -f esieaFront/pom.xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
