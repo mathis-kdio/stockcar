@@ -14,7 +14,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B -U -f esieaBack/pom.xml compile
       - name: Run tests and collect coverage
-        run: mvn -B -f esieaBack/pom.xml test --fail-at-end
+        run: mvn -B -f esieaBack/pom.xml test --fail-never
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
