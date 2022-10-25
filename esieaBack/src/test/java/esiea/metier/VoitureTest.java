@@ -78,5 +78,7 @@ public class VoitureTest {
         assertEquals(this.voiture.getTypeDonnee("annee"), "entier");
         assertEquals(this.voiture.getTypeDonnee("km"), "entier");
         assertEquals(this.voiture.getTypeDonnee("prix"), "entier");
+
+        assertEquals(this.voiture.getTypeDonnee("test"), "");
     }
 }
