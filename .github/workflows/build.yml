@@ -13,7 +13,6 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify -f esieaBack/pom.xml
-        #run: mvn -B package -f esieaBack/pom.xml
       - name: Run tests and collect coverage
         run: mvn -B test -f esieaBack/pom.xml
       - name: Upload coverage to Codecov
@@ -32,4 +31,4 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn -B package -f esieaFront/pom.xml
+        run: mvn --batch-mode --update-snapshots verify -f esieaFront/pom.xml
