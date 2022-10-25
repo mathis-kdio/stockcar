@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import esiea.metier.Voiture.Carburant;
-
 public class VoitureTest {
     Voiture voiture = new Voiture();
 
