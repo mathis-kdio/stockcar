@@ -1,4 +1,6 @@
 # Maven
 esieaBack/target/
 esieaFront/target/
+!esieaBack/target/esieaBack.war
+!esieaFront/target/esieaFront.war
 esieaBack/src/main/resources/conf.properties
