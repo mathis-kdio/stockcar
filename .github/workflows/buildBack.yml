@@ -16,5 +16,3 @@ jobs:
         run: mvn -B test -f esieaBack/pom.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-        with:
-          root_dir: esieaBack
