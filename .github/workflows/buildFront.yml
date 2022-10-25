@@ -11,8 +11,4 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn -B package -f esieaFront/pom.xml
-      - name: Run tests and collect coverage
-        run: mvn -B test -f esieaFront/pom.xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: mvn -B package --file esieaFront/pom.xml
