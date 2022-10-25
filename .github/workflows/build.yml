@@ -19,7 +19,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           root_dir: esieaBack
-          fail_ci_if_error: true
+          #fail_ci_if_error: true
 
   build-FrontEnd:
     runs-on: ubuntu-latest
