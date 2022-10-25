@@ -1,4 +1,4 @@
-name: Java BackEnd CI
+name: Java CI
 on: [push]
 jobs:
   build-BackEnd:
