@@ -1,3 +1,5 @@
 # Maven
 esieaBack/target/
 esieaFront/target/
+!esieaBack/target/esieaBack.war
+!esieaFront/target/esieaFront.war
