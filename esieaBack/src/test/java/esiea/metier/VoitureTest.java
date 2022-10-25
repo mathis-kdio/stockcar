@@ -68,4 +68,15 @@ public class VoitureTest {
         assertEquals(this.voiture.check(), false);
     }
     
+    @Test
+    public void getTypeDonnee() {
+        assertEquals(this.voiture.getTypeDonnee("marque"), "string");
+        assertEquals(this.voiture.getTypeDonnee("modele"), "string");
+        assertEquals(this.voiture.getTypeDonnee("finition"), "string");
+
+        assertEquals(this.voiture.getTypeDonnee("id"), "entier");
+        assertEquals(this.voiture.getTypeDonnee("annee"), "entier");
+        assertEquals(this.voiture.getTypeDonnee("km"), "entier");
+        assertEquals(this.voiture.getTypeDonnee("prix"), "entier");
+    }
 }
