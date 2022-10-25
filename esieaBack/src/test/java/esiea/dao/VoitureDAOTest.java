@@ -56,7 +56,7 @@ public class VoitureDAOTest {
         int id = 0;
         try {
             VoitureDAO vDao = new VoitureDAO();
-            Voiture[] voitures = vDao.rechercherVoitures("test", 0, 0).getData();
+            Voiture[] voitures = vDao.rechercherVoitures("", 0, 0).getData();
             id = voitures[0].getId();
 		} catch (SQLException sql) {
 			sql.printStackTrace();
