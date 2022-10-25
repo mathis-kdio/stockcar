@@ -14,6 +14,7 @@ jobs:
         run: |
           sudo /etc/init.d/mysql start
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e 'USE stockcar' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
           mysql -e 'CREATE TABLE voiture (id integer primary key auto_increment,	marque varchar(30) not null, modele varchar(30) not null, finition varchar(30) not null, carburant char, km integer, annee integer, prix integer);' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - uses: actions/checkout@v3
