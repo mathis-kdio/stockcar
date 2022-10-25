@@ -1,7 +1,7 @@
 name: Java BackEnd CI
 on: [push]
 jobs:
-  build:
+  build-BackEnd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +18,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           root_dir: esieaBack
-  build:
+  build-FrontEnd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
