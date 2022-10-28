@@ -18,7 +18,7 @@ public class VoitureTest {
     Voiture voiture = new Voiture();
 
     @Test
-    public void set_and_get_parameters() {
+    public void test_set_and_get_parameters() {
 		this.voiture.setId(0);
         assertEquals(this.voiture.getId(), 0);
     }
@@ -50,7 +50,7 @@ public class VoitureTest {
     public int testPrix;
 
     @Test
-    public void check() {
+    public void test_check() {
 		this.voiture.setId(testId);
         this.voiture.setMarque(testMarque);
         this.voiture.setModele(testModele);
@@ -63,7 +63,7 @@ public class VoitureTest {
     }
     
     @Test
-    public void getTypeDonnee() {
+    public void test_getTypeDonnee_() {
         assertEquals(Voiture.getTypeDonnee("marque"), "string");
         assertEquals(Voiture.getTypeDonnee("modele"), "string");
         assertEquals(Voiture.getTypeDonnee("finition"), "string");
