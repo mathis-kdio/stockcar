@@ -33,10 +33,10 @@ public class StringUtilsTest {
         assertEquals(StringUtils.nbOccurrence("aaaa", 'b'), 0);
     }
 
-    @Test
+    /*@Test
     public void nbOccurrence_with_null() {
         assertEquals(StringUtils.nbOccurrence(null, 'a'), 0);
-    }
+    }*/
 
     @Test
     public void nbOccurrence_with_4_AAAA_search_a() {
