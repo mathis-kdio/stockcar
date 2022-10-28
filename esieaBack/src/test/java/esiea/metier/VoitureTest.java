@@ -27,7 +27,17 @@ public class VoitureTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
             { true, 1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
-            { false, -1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 }
+            { false, -1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, null, "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, "", "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, "testMarque", null, "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, "testMarque", "", "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, "testMarque", "testModele", null, Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, "testMarque", "testModele", "", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, 1, "testMarque", "testModele", "testFinition", null, 1, 1901, 1 },
+            { false, 1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, -1, 1901, 1 },
+            { false, 1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 1850, 1 },
+            { false, 1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 3000, 1 }
         });
     }
     @Parameter
@@ -61,18 +71,44 @@ public class VoitureTest {
         this.voiture.setPrix(testPrix);
         assertEquals(testExpected, this.voiture.check());
     }
-    
+
     @Test
-    public void test_getTypeDonnee_() {
+    public void test_getTypeDonnee_marque() {
         assertEquals(Voiture.getTypeDonnee("marque"), "string");
+    }
+
+    @Test
+    public void test_getTypeDonnee_modele() {
         assertEquals(Voiture.getTypeDonnee("modele"), "string");
+    }
+
+    @Test
+    public void test_getTypeDonnee_finition() {
         assertEquals(Voiture.getTypeDonnee("finition"), "string");
+    }
 
+    @Test
+    public void test_getTypeDonnee_id() {
         assertEquals(Voiture.getTypeDonnee("id"), "entier");
-        assertEquals(Voiture.getTypeDonnee("annee"), "entier");
-        assertEquals(Voiture.getTypeDonnee("km"), "entier");
-        assertEquals(Voiture.getTypeDonnee("prix"), "entier");
+    }
 
+    @Test
+    public void test_getTypeDonnee_annee() {
+        assertEquals(Voiture.getTypeDonnee("annee"), "entier");
+    }
+
+    @Test
+    public void test_getTypeDonnee_km() {
+        assertEquals(Voiture.getTypeDonnee("km"), "entier");
+    }
+
+    @Test
+    public void test_getTypeDonnee_prix() {
+        assertEquals(Voiture.getTypeDonnee("prix"), "entier");
+    }
+
+    @Test
+    public void test_getTypeDonnee_test() {
         assertEquals(Voiture.getTypeDonnee("test"), "");
     }
 }
