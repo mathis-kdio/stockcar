@@ -1,12 +1,19 @@
 package esiea.metier;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import esiea.metier.Voiture.Carburant;
 
+@RunWith(Parameterized.class)
 public class VoitureTest {
     Voiture voiture = new Voiture();
 
@@ -16,69 +23,56 @@ public class VoitureTest {
         assertEquals(this.voiture.getId(), 0);
     }
 
+    @Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][] {
+            { true, 1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 },
+            { false, -1, "testMarque", "testModele", "testFinition", Carburant.ESSENCE, 1, 1901, 1 }
+        });
+    }
+    @Parameter
+    public Boolean testExpected;
+    @Parameter(1)
+    public int testId;
+    @Parameter(2)
+    public String testMarque;
+    @Parameter(3)
+    public String testModele;
+    @Parameter(4)
+    public String testFinition;
+    @Parameter(5)
+    public Carburant testCarburant;
+    @Parameter(6)
+    public int testKm;
+    @Parameter(7)
+    public int testAnnee;
+    @Parameter(8)
+    public int testPrix;
+
     @Test
     public void check() {
-		this.voiture.setId(1);
-        this.voiture.setMarque("test");
-        this.voiture.setModele("test");
-        this.voiture.setFinition("test");
-        this.voiture.setCarburant(Carburant.ESSENCE);
-        this.voiture.setKm(1);
-        this.voiture.setAnnee(1901);
-        this.voiture.setPrix(1);
-        assertEquals(this.voiture.check(), true);
-
-        this.voiture.setId(-1);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setId(0);
-
-        this.voiture.setMarque(null);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setMarque("");
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setMarque("test");
-
-        this.voiture.setModele(null);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setModele("");
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setModele("test");
-
-        this.voiture.setFinition(null);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setFinition("");
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setFinition("test");
-
-        this.voiture.setCarburant(null);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setCarburant(Carburant.ESSENCE);
-
-        this.voiture.setKm(-1);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setKm(1);
-
-        this.voiture.setAnnee(1850);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setAnnee(3000);
-        assertEquals(this.voiture.check(), false);
-        this.voiture.setAnnee(1901);
-
-        this.voiture.setPrix(-1);
-        assertEquals(this.voiture.check(), false);
+		this.voiture.setId(testId);
+        this.voiture.setMarque(testMarque);
+        this.voiture.setModele(testModele);
+        this.voiture.setFinition(testFinition);
+        this.voiture.setCarburant(testCarburant);
+        this.voiture.setKm(testKm);
+        this.voiture.setAnnee(testAnnee);
+        this.voiture.setPrix(testPrix);
+        assertEquals(testExpected, this.voiture.check());
     }
     
     @Test
     public void getTypeDonnee() {
-        assertEquals(this.voiture.getTypeDonnee("marque"), "string");
-        assertEquals(this.voiture.getTypeDonnee("modele"), "string");
-        assertEquals(this.voiture.getTypeDonnee("finition"), "string");
+        assertEquals(Voiture.getTypeDonnee("marque"), "string");
+        assertEquals(Voiture.getTypeDonnee("modele"), "string");
+        assertEquals(Voiture.getTypeDonnee("finition"), "string");
 
-        assertEquals(this.voiture.getTypeDonnee("id"), "entier");
-        assertEquals(this.voiture.getTypeDonnee("annee"), "entier");
-        assertEquals(this.voiture.getTypeDonnee("km"), "entier");
-        assertEquals(this.voiture.getTypeDonnee("prix"), "entier");
+        assertEquals(Voiture.getTypeDonnee("id"), "entier");
+        assertEquals(Voiture.getTypeDonnee("annee"), "entier");
+        assertEquals(Voiture.getTypeDonnee("km"), "entier");
+        assertEquals(Voiture.getTypeDonnee("prix"), "entier");
 
-        assertEquals(this.voiture.getTypeDonnee("test"), "");
+        assertEquals(Voiture.getTypeDonnee("test"), "");
     }
 }
